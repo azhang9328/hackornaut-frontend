@@ -1,0 +1,18 @@
+@media all and (min-width: 480px) {
+    .Login {
+      text-align: center;
+      width: 300px;
+      border: 8px solid rgb(195, 206, 195);
+      padding: 50px;
+      margin: 20px;
+
+    }
+  
+    .Login form {
+      text-align: center;
+      display: block;
+      font-size:20px;
+      padding:4px 2px;
+      width:70px;
+    }
+  }
