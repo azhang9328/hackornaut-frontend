@@ -3,6 +3,7 @@ import Login from './containers/Login';
 
 import './App.css';
 
+const DB_URL = "http://localhost:3000/"
 class App extends Component {
 
   state = {
@@ -15,12 +16,32 @@ class App extends Component {
 
   logUserIn = (username) => {
     console.log(username)
-    this.setState({
-      loggedIn: true,
-      currUser: {name: username}
-    })
+    console.log(DB_URL + "users/login")
 
+    // this.setState({
+    //   loggedIn: true,
+    //   currUser: {name: username}
+    // })
     console.log(this.state)
+   fetch(DB_URL + "users/login", {
+     method: 'post', 
+     headers: {'Content-Type':'application/json',
+                Accept: 'application/json'
+     },
+     body: JSON.stringify({
+       "name": username
+     })
+     }).then((res) => res.json()).then((data)=> {
+        this.setState({
+            loggedIn: true,
+            currUser: {
+              id: data.id,
+              name: data.name
+            }
+          })
+
+     });
+
   }
 
   render() {
