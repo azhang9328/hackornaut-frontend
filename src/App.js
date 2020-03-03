@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Login from './containers/Login';
+import ResultList from './containers/ResultList'
+import SearchBar from './components/SearchBar'
 
 import './App.css';
 
@@ -12,6 +14,7 @@ class App extends Component {
                 id: "",
                 name: "",
               },
+    results: null
   }
 
   logUserIn = (username) => {
@@ -44,11 +47,38 @@ class App extends Component {
 
   }
 
+  search = (email) => {
+    fetch(DB_URL + "emails/search", {
+      method: 'POST',
+      headers: {'Content-Type':'application/json',
+                Accept: 'application/json'},
+      body: JSON.stringify({"search": email})
+    })
+    .then(res => res.json())
+    .then(data => {
+      // console.log(data)
+      this.setState({
+        ...this.state,
+        results: data
+      })
+    })
+  }
+
+  saveSearchResult = () => {
+    fetch(DB_URL + `users/${this.state.currUser.id}/save_search`, {
+      method: 'POST',
+      headers: {'Content-Type':'application/json',
+                Accept: 'application/json'},
+      body: JSON.stringify(this.state.results)
+    })
+  }
+
   render() {
     return (
       <div className="App">
         <p>Hackernaut Frontend</p>
-        {this.state.loggedIn? <p>logged in</p> : <Login logUserIn={this.logUserIn}/>}
+        {this.state.loggedIn? <SearchBar search={this.search}/> : <Login logUserIn={this.logUserIn}/>}
+        {this.state.results ? <ResultList results={this.state.results} saveSearchResult={this.saveSearchResult}/> : null}
       </div>
 
      
