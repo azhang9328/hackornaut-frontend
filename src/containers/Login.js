@@ -23,7 +23,7 @@ class Login extends Component {
                 <form onSubmit={this.handleSubmit}>
                     <label><b>Login</b></label>
                     <input type="text" placeholder="Enter Username" name="uname" onChange={(e) => this.handleChange(e)}/>
-                    <button type="submit">Login or Create</button>
+                    <button type="submit">Login</button>
                 </form>
             </div>
 
