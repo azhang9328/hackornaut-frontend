@@ -10,11 +10,10 @@ import {MenuIcon, Button, IconButton} from '@material-ui/core/'
 const NavBar = () => {
     return(
         <div>
-        <AppBar position="static">
+        <AppBar position="fixed">
           <Toolbar>
             <IconButton edge="start" color="inherit" aria-label="menu">
             {/* <HomeIcon /> */}
-
               {/* <MenuIcon /> */}
             </IconButton>
             <Typography variant="h6">
