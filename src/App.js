@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import Login from './containers/Login';
-import ResultList from './containers/ResultList'
-import SearchBar from './components/SearchBar'
-
+import SearchContainer from './containers/SearchContainer'
+import NavBar from './components/NavBar'
 import './App.css';
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
+import Privacy from './components/Privacy'
 
 const DB_URL = "http://localhost:3000/"
 class App extends Component {
@@ -13,20 +14,19 @@ class App extends Component {
     currUser: {
                 id: "",
                 name: "",
-              },
-    results: null
+              }
   }
 
   logUserIn = (username) => {
-   fetch(DB_URL + "users/login", {
-     method: 'post', 
-     headers: {'Content-Type':'application/json',
+    fetch(DB_URL + "users/login", {
+      method: 'post', 
+      headers: {'Content-Type':'application/json',
                 Accept: 'application/json'
-     },
-     body: JSON.stringify({
-       "name": username
-     })
-     }).then((res) => res.json()).then((data)=> {
+      },
+      body: JSON.stringify({
+        "name": username
+      })
+      }).then((res) => res.json()).then((data)=> {
         this.setState({
             loggedIn: true,
             currUser: {
@@ -35,44 +35,24 @@ class App extends Component {
             }
           })
 
-     });
-
-  }
-
-  search = (email) => {
-    fetch(DB_URL + "emails/search", {
-      method: 'POST',
-      headers: {'Content-Type':'application/json',
-                Accept: 'application/json'},
-      body: JSON.stringify({"search": email})
-    })
-    .then(res => res.json())
-    .then(data => {
-      this.setState({
-        ...this.state,
-        results: data
-      })
-    })
-  }
-
-  saveSearchResult = () => {
-    fetch(DB_URL + `users/${this.state.currUser.id}/save_search`, {
-      method: 'POST',
-      headers: {'Content-Type':'application/json',
-                Accept: 'application/json'},
-      body: JSON.stringify(this.state.results)
-    })
+    });
   }
 
   render() {
     return (
-      <div className="App">
-        <p>Hackernaut Frontend</p>
-        {this.state.loggedIn? <SearchBar search={this.search}/> : <Login logUserIn={this.logUserIn}/>}
-        {this.state.results ? <ResultList results={this.state.results} saveSearchResult={this.saveSearchResult}/> : null}
-      </div>
-
-     
+      <Router>
+        <div className="App">
+          <NavBar loggedIn={this.state.loggedIn}/>
+          <Switch>
+              <Route path="/about">
+                <Privacy/>
+              </Route>
+              <Route path="/">
+                {this.state.loggedIn ? <SearchContainer currUser={this.state.currUser}/> : <Login logUserIn={this.logUserIn}/>}
+              </Route>
+          </Switch>
+        </div>
+      </Router>
     );
   }
 }

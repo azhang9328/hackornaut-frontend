@@ -1,9 +1,9 @@
 import React, { Component} from 'react'
-import ResultCard from '../components/ResultCard'
+import BreachCard from './BreachCard'
 
-class ResultList extends Component {
+class BreachList extends Component {
     renderResults = () => {
-        return this.props.results.breaches.map(result => <li><ResultCard key={result.id} result={result}/></li>)
+        return this.props.results.breaches.map(result => <BreachCard key={result.id} result={result}/>)
     }
 
     render(){
@@ -24,4 +24,4 @@ class ResultList extends Component {
     }
 }
 
-export default ResultList
+export default BreachList
