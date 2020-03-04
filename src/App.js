@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import Login from './containers/Login';
-import ResultList from './containers/ResultList'
-import SearchBar from './components/SearchBar'
+import MainContainer from './containers/MainContainer'
+import NavBar from './components/NavBar'
+import Privacy from './components/Privacy'
 
 import './App.css';
 
@@ -13,28 +14,19 @@ class App extends Component {
     currUser: {
                 id: "",
                 name: "",
-              },
-    results: null
+              }
   }
 
   logUserIn = (username) => {
-    console.log(username)
-    console.log(DB_URL + "users/login")
-
-    // this.setState({
-    //   loggedIn: true,
-    //   currUser: {name: username}
-    // })
-    console.log(this.state)
-   fetch(DB_URL + "users/login", {
-     method: 'post', 
-     headers: {'Content-Type':'application/json',
+    fetch(DB_URL + "users/login", {
+      method: 'post', 
+      headers: {'Content-Type':'application/json',
                 Accept: 'application/json'
-     },
-     body: JSON.stringify({
-       "name": username
-     })
-     }).then((res) => res.json()).then((data)=> {
+      },
+      body: JSON.stringify({
+        "name": username
+      })
+      }).then((res) => res.json()).then((data)=> {
         this.setState({
             loggedIn: true,
             currUser: {
@@ -43,45 +35,16 @@ class App extends Component {
             }
           })
 
-     });
-
-  }
-
-  search = (email) => {
-    fetch(DB_URL + "emails/search", {
-      method: 'POST',
-      headers: {'Content-Type':'application/json',
-                Accept: 'application/json'},
-      body: JSON.stringify({"search": email})
-    })
-    .then(res => res.json())
-    .then(data => {
-      // console.log(data)
-      this.setState({
-        ...this.state,
-        results: data
-      })
-    })
-  }
-
-  saveSearchResult = () => {
-    fetch(DB_URL + `users/${this.state.currUser.id}/save_search`, {
-      method: 'POST',
-      headers: {'Content-Type':'application/json',
-                Accept: 'application/json'},
-      body: JSON.stringify(this.state.results)
-    })
+    });
   }
 
   render() {
     return (
       <div className="App">
-        <p>Hackernaut Frontend</p>
-        {this.state.loggedIn? <SearchBar search={this.search}/> : <Login logUserIn={this.logUserIn}/>}
-        {this.state.results ? <ResultList results={this.state.results} saveSearchResult={this.saveSearchResult}/> : null}
+        <NavBar />
+        {this.state.loggedIn ? <MainContainer currUser={this.state.currUser}/> : <Login logUserIn={this.logUserIn}/>}
+        <Privacy />
       </div>
-
-     
     );
   }
 }
