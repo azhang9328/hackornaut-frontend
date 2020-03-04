@@ -1,6 +1,7 @@
+
 import React, {Fragment} from 'react'
 
-const ResultCard = props => {
+const BreachCard = props => {
     const {result} = props
     return(
         <Fragment>
@@ -19,4 +20,4 @@ const ResultCard = props => {
     )
 }
 
-export default ResultCard
+export default BreachCard
