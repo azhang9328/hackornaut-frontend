@@ -18,14 +18,6 @@ class App extends Component {
   }
 
   logUserIn = (username) => {
-    console.log(username)
-    console.log(DB_URL + "users/login")
-
-    // this.setState({
-    //   loggedIn: true,
-    //   currUser: {name: username}
-    // })
-    console.log(this.state)
    fetch(DB_URL + "users/login", {
      method: 'post', 
      headers: {'Content-Type':'application/json',
@@ -56,7 +48,6 @@ class App extends Component {
     })
     .then(res => res.json())
     .then(data => {
-      // console.log(data)
       this.setState({
         ...this.state,
         results: data
