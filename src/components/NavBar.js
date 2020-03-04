@@ -10,7 +10,7 @@ import {Link} from 'react-router-dom'
 const NavBar = (props) => {
     return(
         <div>
-          <AppBar position="static">
+          <AppBar position="fixed">
             <Toolbar>
               <IconButton edge="start" color="inherit" aria-label="menu">
               {/* <HomeIcon /> */}

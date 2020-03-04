@@ -3,7 +3,7 @@ import BreachCard from './BreachCard'
 
 class BreachList extends Component {
     renderResults = () => {
-        return this.props.results.breaches.map(result => <li><BreachCard key={result.id} result={result}/></li>)
+        return this.props.results.breaches.map(result => <BreachCard key={result.id} result={result}/>)
     }
 
     render(){
