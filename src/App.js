@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import Login from './containers/Login';
-import MainContainer from './containers/MainContainer'
+import SearchContainer from './containers/SearchContainer'
 import NavBar from './components/NavBar'
-import Privacy from './components/Privacy'
-
 import './App.css';
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
+import Privacy from './components/Privacy'
 
 const DB_URL = "http://localhost:3000/"
 class App extends Component {
@@ -40,11 +40,19 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <NavBar />
-        {this.state.loggedIn ? <MainContainer currUser={this.state.currUser}/> : <Login logUserIn={this.logUserIn}/>}
-        <Privacy />
-      </div>
+      <Router>
+        <div className="App">
+          <NavBar loggedIn={this.state.loggedIn}/>
+          <Switch>
+              <Route path="/about">
+                <Privacy/>
+              </Route>
+              <Route path="/">
+                {this.state.loggedIn ? <SearchContainer currUser={this.state.currUser}/> : <Login logUserIn={this.logUserIn}/>}
+              </Route>
+          </Switch>
+        </div>
+      </Router>
     );
   }
 }
