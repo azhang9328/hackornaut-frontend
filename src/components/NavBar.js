@@ -22,6 +22,8 @@ const NavBar = (props) => {
               </Typography>
               <Button color="inherit" component={Link} to="/">{props.loggedIn ? "Home" : "Login"}</Button>
               <Button color="inherit" component={Link} to="/about">Privacy</Button>
+              <Button color="inherit" component={Link} to="/index">Index</Button>
+
             </Toolbar>
           </AppBar>
         </div>
