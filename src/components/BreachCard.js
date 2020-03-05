@@ -1,45 +1,58 @@
 import React, {Fragment} from 'react'
-import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
-import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
+import ButtonBase from '@material-ui/core/ButtonBase';
 
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
     overflow: 'hidden',
-    padding: theme.spacing(0, 3),
+    // padding: theme.spacing(0, 3),
     },
   paper: {
     maxWidth: 800,
     overflow: 'hidden',
     margin: `${theme.spacing(1)}px auto`,
-    padding: theme.spacing(2),
+    padding: theme.spacing(4), 
     backgroundColor: '#000000',
     color: '#FFFFFF',
-    opacity: 0.5,
+    opacity: 0.7,
+  },
+  image: {
+    width: 150,
+    height: 150,
+  },
+  img: {
+    margin: 'auto',
+    display: 'block',
+    maxWidth: '100%',
+    maxHeight: '100%',
   },
 }));
 
 const BreachCard = props => {
-  const classes = useStyles();
   const {result} = props
+  const classes = useStyles();
+
     return(
         <Fragment>
             <div className={classes.root}>
                 <Paper className={classes.paper}>
                   <Grid container wrap="nowrap" spacing={2}>
                     <Grid item>
-                      <Avatar>{result.logo_path}</Avatar>
+                      <ButtonBase className={classes.image}>
+                        <img className={classes.img} alt="complex" src={result.logo_path}/>
+                      </ButtonBase>                    
                     </Grid>
                     <Grid item xs>
-                      <Typography>Domain: {result.domain}</Typography> 
-                      <Typography>Breach Date: {result.breach_date}</Typography>
-                      <Typography>PWN Count: {result.pwn_count}</Typography>
-                      <Typography>Details: {result.description}</Typography>
-                      <Typography>Data Classes: {result.data_classes}</Typography>
-                      <Typography>Is Spam List: {result.is_spam_list ? "True" : "False"}</Typography>
+                      <Typography><strong>DOMAIN: </strong>{result.domain}</Typography> 
+                      <Typography><strong>BREACH DATE: </strong>{result.breach_date}</Typography>
+                      <Typography><strong>BREACH COUNT: </strong>{result.pwn_count}</Typography>
+                      <Typography><strong>DETAILS: </strong>{result.description}</Typography> 
+                      <Typography><strong>DATA CLASSES: </strong>{(result.data_classes).replace(/[\[\]"]+/g, '')}</Typography>
+                      <Typography><strong>IS SPAM LIST: </strong>{result.is_spam_list ? "True" : "False"}</Typography>
                     </Grid>
                   </Grid>
                 </Paper>
@@ -49,13 +62,3 @@ const BreachCard = props => {
  }
 
 export default BreachCard
-
-//   {/* {result.name} */}
-//   {result.title}
-//   {result.domain}
-//   {result.breach_date}
-//   {result.pwn_count}
-//   {result.description}
-//   {result.data_classes}
-//   {result.is_spam_list}
-//   {result.logo_path}
