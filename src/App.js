@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import Login from './containers/Login';
-import SearchContainer from './containers/SearchContainer'
-import NavBar from './components/NavBar'
+import SearchContainer from './containers/SearchContainer';
+import NavBar from './components/NavBar';
 import './App.css';
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
-import Privacy from './components/Privacy'
-import IndexContainer from './containers/IndexContainer'
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import Privacy from './components/Privacy';
+import IndexContainer from './containers/IndexContainer';
+import ProfileContainer from './containers/ProfileContainer';
+
 
 const DB_URL = "http://localhost:3000/"
 class App extends Component {
@@ -50,6 +52,9 @@ class App extends Component {
               </Route>
               <Route path="/index">
                 <IndexContainer/>
+              </Route>
+              <Route path="/profile">
+                <ProfileContainer user={this.state.currUser}/>
               </Route>
               <Route path="/">
                 {this.state.loggedIn ? <SearchContainer currUser={this.state.currUser}/> : <Login logUserIn={this.logUserIn}/>}
