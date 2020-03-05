@@ -1,0 +1,13 @@
+.form-check label.choice {
+    float: right;
+    margin-left: 30000px;
+    margin-right: 30px;
+    padding: 20px;
+	_top:0.2em;
+}
+
+.form-check input.checkbox{
+    display: inline;
+    margin-right: 0.9em;
+	margin-left: 0.5em;
+}

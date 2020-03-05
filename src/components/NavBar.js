@@ -52,6 +52,7 @@ const NavBar = (props) => {
               <Button color="inherit" component={Link} to="/about">Privacy</Button>
               <Button color="inherit" component={Link} to="/index">Index</Button>
               {/* <NavLink to="/about" exact style={link} activeStyle={active} className={classes.root} >Testing</NavLink> */}
+              <Button color="inherit" component={Link} to="/profile">{props.loggedIn ? "Profile" : ""}</Button>
             </Toolbar>
           </AppBar>
         </div>
