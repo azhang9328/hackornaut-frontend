@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import EmailList from '../components/EmailList';
+
 import "./Profile.css";
 
 
@@ -27,17 +29,43 @@ class ProfileContainer extends Component {
           this.setState({
             profile: myJson
           })
-          console.log(this.state)
     
         }).catch((error) => {
             console.error(error)
         });
       }
 
+      displayByEmail = () => {
+        let emails = this.state.profile.user_emails
+        return emails.map(email => 
+            <EmailList address={email.address} breaches={email.breaches}/>
+        )
+
+
+      }
+
+      displayByBreach= () => {
+        // const userEmails = []
+        // let emails = this.state.profile
+        // for(let key in emails) {
+        //     if(key === 'user_emails') {
+        //         emails = emails[key];
+        //         break;
+        //     }
+        // }
+        // for(let key in emails) {
+        //     console.log(emails[key])
+        //     userEmails.push(emails[key])
+        // }
+
+        // console.log("USER EMAILS!!", userEmails)
+
+    }
+
       render(){
 
-        console.log(this.props)
-        console.log(this.state.selectedOption)
+        // console.log(this.props)
+        // console.log(this.state.selectedOption)
           return( 
               <div>
                   <h1>Profile: {this.props.user.name}</h1>
@@ -54,9 +82,7 @@ class ProfileContainer extends Component {
                         />
                         By Email  
                     </label>
-                    {/* </div>
-                
-                    <div className="form-check"> */}
+             
                     <label>
                         <input
                         type="radio"
@@ -70,6 +96,8 @@ class ProfileContainer extends Component {
                     </label>
                 </div>     
              </form>
+            
+             {this.state.selectedOption === "emails"? this.displayByEmail(): this.displayByBreach()}
             </div>
           );
       }
