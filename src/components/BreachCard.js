@@ -1,4 +1,3 @@
-
 import React, {Fragment} from 'react'
 import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/core/styles';
@@ -17,6 +16,9 @@ const useStyles = makeStyles(theme => ({
     overflow: 'hidden',
     margin: `${theme.spacing(1)}px auto`,
     padding: theme.spacing(2),
+    backgroundColor: '#000000',
+    color: '#FFFFFF',
+    opacity: 0.5,
   },
 }));
 
@@ -32,15 +34,12 @@ const BreachCard = props => {
                       <Avatar>{result.logo_path}</Avatar>
                     </Grid>
                     <Grid item xs>
-                      <Typography>{result.description}</Typography>
-                        {/* {result.title}
-                        {result.domain}
-                        {result.breach_date}
-                        {result.pwn_count}
-                        {result.description}
-                        {result.data_classes}
-                        {result.is_spam_list}
-                        {result.logo_path} */}
+                      <Typography>Domain: {result.domain}</Typography> 
+                      <Typography>Breach Date: {result.breach_date}</Typography>
+                      <Typography>PWN Count: {result.pwn_count}</Typography>
+                      <Typography>Details: {result.description}</Typography>
+                      <Typography>Data Classes: {result.data_classes}</Typography>
+                      <Typography>Is Spam List: {result.is_spam_list ? "True" : "False"}</Typography>
                     </Grid>
                   </Grid>
                 </Paper>
@@ -50,7 +49,6 @@ const BreachCard = props => {
  }
 
 export default BreachCard
-
 
 //   {/* {result.name} */}
 //   {result.title}
