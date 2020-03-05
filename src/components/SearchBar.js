@@ -1,5 +1,6 @@
 import React, { Component} from 'react'
 import TextField from '@material-ui/core/TextField';
+import "./SearchBar.css";
 
 class SearchBar extends Component {
     render(){

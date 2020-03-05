@@ -1,13 +1,63 @@
-.form-check label.choice {
+/* .form-check label.choice {
     float: right;
     margin-left: 30000px;
     margin-right: 30px;
     padding: 20px;
 	_top:0.2em;
-}
+} */
 
-.form-check input.checkbox{
+/* .form-check input.checkbox{
     display: inline;
     margin-right: 0.9em;
 	margin-left: 0.5em;
+} */
+
+.form-check input[type="radio"]{
+    width   : 0;
+    position: fixed;
+    opacity : 0;
+}
+
+.form-check label[for="radio-1"]{
+    position: relative;
+}
+
+.form-check label[for="radio-2"]{
+    position: relative;
+    left: 70px;
+}
+
+.form-check span::before,
+.form-check span::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+.form-check span.radio:hover {
+    cursor:pointer;
+}
+
+.form-check span.radio::before {
+    left: -52px;
+    width: 43px;
+    height: 25px;
+    background-color: #A8AAC1;
+    border-radius: 50px;
+}
+
+.form-check span.radio::after {
+    left: -49px;
+    width: 16px;
+    height: 16px;
+    background-color: #6C788A;
+    border-radius: 10px;
+    transition: left .25s, background-color .25s;
+}
+
+.form-check input[type="radio"]:checked + label span.radio::after {
+    left: -27px;
+    background-color: rgb(83, 255, 67);
 }
