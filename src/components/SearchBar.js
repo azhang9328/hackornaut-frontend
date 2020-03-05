@@ -1,4 +1,5 @@
 import React, { Component} from 'react'
+import TextField from '@material-ui/core/TextField';
 
 class SearchBar extends Component {
     render(){
@@ -7,7 +8,12 @@ class SearchBar extends Component {
                 e.preventDefault()
                 this.props.search(e.target.search.value)
                 }}>
-                <input type="text" name="search"></input>
+                <TextField name="search" style={{padding: 24}}
+                    id="searchInput"
+                    placeholder="Search for E-mail" 
+                    margin="normal"
+                    color="text.secondary"
+                    />
                 <button value="submit">Search</button>
             </form>
         )
