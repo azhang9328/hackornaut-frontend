@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import SearchBar from '../components/SearchBar'
-import BreachList from '../components/BreachList'
+import SearchList from '../components/SearchList'
+import Grid from '@material-ui/core/Grid';
+import Button from '@material-ui/core/Button';
 
 const DB_URL = "http://localhost:3000/"
 
@@ -67,13 +69,17 @@ class SearchContainer extends Component {
 
       showResults = () => {
         return <div>
-                {this.state.results.address}
+          <Grid container direction="column" justify="center" alignItems="center">
+
+                {/* {this.state.results.address} */}
                 <form onSubmit={(e) => {
                     e.preventDefault()
                     this.saveSearchResult()
                   }}>
-                    <button>Save Email + Breach Result</button>
+                    <Button variant="contained" color="primary">Save Email + Breach Results </Button>
                 </form>
+                <SearchList saveSearchResult={this.saveSearchResult} breaches={this.state.results.breaches}/>
+          </Grid>
                 <BreachList saveSearchResult={this.saveSearchResult} breaches={this.getSelectBreaches()}/>
                 <button onClick={() => this.showLessBreaches()}> ←</button>
                  {this.state.start_index}-{parseInt(this.state.start_index+this.state.select_amount)}   
