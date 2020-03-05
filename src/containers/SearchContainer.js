@@ -34,11 +34,27 @@ class SearchContainer extends Component {
         })
       }
 
+      showResults = () => {
+        return <div>
+                {this.state.results.address}
+                <form onSubmit={(e) => {
+                    e.preventDefault()
+                    this.saveSearchResult()
+                  }}>
+                    <button>Save Email + Breach Result</button>
+                </form>
+                <BreachList saveSearchResult={this.saveSearchResult} breaches={this.state.results.breaches}/>
+        </div>
+      }
+
       render(){
+        console.log(this.state.results)
           return(
             <div>
                 <SearchBar  search={this.search}/>
-                {this.state.results === null ? null : <BreachList saveSearchResult={this.saveSearchResult} results={this.state.results}/>}
+
+
+                {this.state.results === null ? null : this.showResults()}
             </div>
           )
       }

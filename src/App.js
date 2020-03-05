@@ -5,6 +5,7 @@ import NavBar from './components/NavBar'
 import './App.css';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import Privacy from './components/Privacy'
+import IndexContainer from './containers/IndexContainer'
 
 const DB_URL = "http://localhost:3000/"
 class App extends Component {
@@ -47,9 +48,13 @@ class App extends Component {
               <Route path="/about">
                 <Privacy/>
               </Route>
+              <Route path="/index">
+                <IndexContainer/>
+              </Route>
               <Route path="/">
                 {this.state.loggedIn ? <SearchContainer currUser={this.state.currUser}/> : <Login logUserIn={this.logUserIn}/>}
               </Route>
+
           </Switch>
         </div>
       </Router>
