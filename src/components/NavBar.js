@@ -48,7 +48,8 @@ const NavBar = (props) => {
               <Typography variant="h6">
                 Hackornaut
               </Typography>
-              <Button color="inherit" component={Link} to="/">{props.loggedIn ? "Home" : "Login"}</Button>
+
+              <Button color="inherit" for="radioHL" component={Link} to="/">{props.loggedIn ? "Home" : "Login"}</Button>
               <Button color="inherit" component={Link} to="/about">Privacy</Button>
               <Button color="inherit" component={Link} to="/index">Index</Button>
               {/* <NavLink to="/about" exact style={link} activeStyle={active} className={classes.root} >Testing</NavLink> */}

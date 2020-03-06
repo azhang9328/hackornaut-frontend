@@ -41,7 +41,25 @@ class App extends Component {
     });
   }
 
+  editName = (inputName) => {
+    this.setState({
+      ...this.state,
+      currUser: {name: inputName}
+    })
+  }
+
+  logUserOut = () => {
+    this.setState({
+      loggedIn: false,
+      currUser: {
+        id: "",
+        name: ""
+      }
+    })
+  }
+
   render() {
+    console.log(this.state.currUser.name)
     return (
       <Router>
         <div className="App">
@@ -54,12 +72,11 @@ class App extends Component {
                 <IndexContainer/>
               </Route>
               <Route path="/profile">
-                <ProfileContainer user={this.state.currUser}/>
+                <ProfileContainer user={this.state.currUser} editName={this.editName} logUserOut={this.logUserOut}/>
               </Route>
               <Route path="/">
                 {this.state.loggedIn ? <SearchContainer currUser={this.state.currUser}/> : <Login logUserIn={this.logUserIn}/>}
               </Route>
-
           </Switch>
         </div>
       </Router>

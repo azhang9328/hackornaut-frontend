@@ -1,5 +1,6 @@
 import React, { Component} from 'react'
 import TextField from '@material-ui/core/TextField';
+import "./SearchBar.css";
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 
@@ -19,9 +20,9 @@ class SearchBar extends Component {
                     variant="filled"
                     color="default"
                     />
-                    {/* <Button value="submit" variant="outlined" color="primary">
+                    <Button value="submit" variant="outlined" color="primary">
                         Search
-                    </Button> */}
+                    </Button>
                 {/* <button class="btn btn-default" type="button" value="submit" variant="outlined" color="primary">Search</button> */}
             </form>
             </Grid>
