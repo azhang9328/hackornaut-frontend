@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-
-
-import BreachList from '../components/BreachList';
+import Grid from '@material-ui/core/Grid';
+import Button from '@material-ui/core/Button';
+import ProfileList from '../components/ProfileList';
 
 const DB_URL = "http://localhost:3000/"
 
@@ -90,18 +90,23 @@ class IndexContainer extends Component {
     render() {
         return ( 
             <div>
-                <h1>Index</h1>
+              <Grid container direction="column" justify="center" alignItems="center">
+                {/* <h1>Index</h1> */}
                 <select value={null} className="form-control" onChange={this.handleChange}>
                     <option value={options[0]}>{options[0]}</option>
                     <option value={options[1]}>{options[1]}</option>
                     <option value={options[2]}>{options[2]}</option>
                     <option value={options[3]}>{options[3]}</option>
                 </select>
-                <BreachList  breaches={this.getSelectBreaches()}/>
-                <button onClick={() => this.showLessBreaches()}> ←</button>
-                 {this.state.start_index}-{parseInt(this.state.start_index+this.state.select_amount)}   
-                <button onClick={() => this.showMoreBreaches()}> →</button>
+                <ProfileList  breaches={this.getSelectBreaches()}/>
+              </Grid>
+              <Grid container direction="row" justify="center" alignItems="center">
+                <Button variant="contained" color="primary" onClick={() => this.showLessBreaches()}> ← </Button>
+                 {this.state.start_index} - {parseInt(this.state.start_index+this.state.select_amount)}    
+                <Button variant="contained" color="primary" onClick={() => this.showMoreBreaches()}> → </Button>
+              </Grid>
             </div>
+            
         );
     }
 

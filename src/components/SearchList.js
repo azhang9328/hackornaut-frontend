@@ -1,13 +1,13 @@
 import React, { Component} from 'react'
-import ProfileCard from './ProfileCard'
+import BreachCard from './BreachCard'
 import { ThemeProvider, createMuiTheme } from "@material-ui/core";
-const baseTheme = createMuiTheme(); ///*** added ThemeProvider */
+const baseTheme = createMuiTheme();
 
-class BreachList extends Component {
+class SearchList extends Component {
     renderResults = () => {
         return this.props.breaches.map(result => 
             <ThemeProvider theme={baseTheme}> 
-            <ProfileCard key={result.id} result={result}/>
+            <BreachCard key={result.id} result={result}/>
             </ThemeProvider>
         )
     }
@@ -23,4 +23,4 @@ class BreachList extends Component {
     }
 }
 
-export default BreachList
+export default SearchList
