@@ -20,9 +20,9 @@ class SearchBar extends Component {
                     variant="filled"
                     color="default"
                     />
-                    {/* <Button value="submit" variant="outlined" color="primary">
+                    <Button value="submit" variant="outlined" color="primary">
                         Search
-                    </Button> */}
+                    </Button>
                 {/* <button class="btn btn-default" type="button" value="submit" variant="outlined" color="primary">Search</button> */}
             </form>
             </Grid>

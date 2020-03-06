@@ -12,6 +12,10 @@
 	margin-left: 0.5em;
 } */
 
+.profile-div{
+    margin-left: 33%
+}
+
 .form-check input[type="radio"]{
     width   : 0;
     position: fixed;

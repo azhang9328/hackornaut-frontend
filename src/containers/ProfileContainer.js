@@ -52,16 +52,9 @@ class ProfileContainer extends Component {
         })
       }
 
-      // postName = () => {
-      //   fetch(DB_URL + `/users/${this.state.profile.id}`, {
-      //     method: "PATCH",
-      //     headers: {
-      //     "Content-Type": "application/json",
-      //     Accept: "application/json"
-      //     },
-      //     body: JSON.stringify({name: value})
-      //     })
-      // }
+      postName = () => {
+
+      }
 
       deleteUser = () => {
         fetch(DB_URL + `users/${this.state.profile.id}`, {
@@ -70,7 +63,6 @@ class ProfileContainer extends Component {
         .then(this.props.logUserOut())
       }
 
-      render(){
       displayByEmail = () => {
         let emails = this.state.profile.user_emails
         return emails.map(email => 
@@ -99,12 +91,9 @@ class ProfileContainer extends Component {
     }
 
       render(){
-
-        // console.log(this.props)
-        // console.log(this.state.selectedOption)
           return( 
-              <div>
-                  <h1>Profile:</h1> <h1 onMouseEnter={this.changeNameTrue} onMouseLeave={this.changeNameFalse}>{this.state.changeName ? <input type="text" name="name" onChange={(e)=>this.props.editName(e.target.name.value)} value={this.props.user.name}/> : this.props.user.name}</h1>
+              <div className="profile-div">
+                  <h1>Profile:</h1> <h1 onMouseEnter={this.changeNameTrue} onMouseLeave={this.changeNameFalse}>{this.state.changeName ? <input type="text" onChange={(e)=>this.props.editName(e.target.value)} value={this.props.user.name}/> : this.props.user.name}</h1>
                   <button onClick={this.deleteUser} to="/">Delete User</button>
                 <form>
                     <div className="form-check">
@@ -120,14 +109,6 @@ class ProfileContainer extends Component {
                     <label for="radio-1">
                         <span class="radio">By Email</span>
                     </label>
-<<<<<<< HEAD
-                    {/* </div>
-                
-                    <div className="form-check"> */}
-=======
-             
-                    <label>
->>>>>>> 8582c39ca489c212fe4f523f4d306f5303911b43
                         <input
                         type="radio"
                         id="radio-2"

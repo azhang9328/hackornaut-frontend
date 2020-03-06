@@ -78,9 +78,10 @@ class SearchContainer extends Component {
                   }}>
                     <Button variant="contained" color="primary">Save Email + Breach Results </Button>
                 </form>
-                <SearchList saveSearchResult={this.saveSearchResult} breaches={this.state.results.breaches}/>
-          </Grid>
-                <BreachList saveSearchResult={this.saveSearchResult} breaches={this.getSelectBreaches()}/>
+                {/* <SearchList saveSearchResult={this.saveSearchResult} breaches={this.state.results.breaches}/> */}
+
+                <SearchList saveSearchResult={this.saveSearchResult} breaches={this.getSelectBreaches()}/>
+                </Grid>
                 <button onClick={() => this.showLessBreaches()}> ←</button>
                  {this.state.start_index}-{parseInt(this.state.start_index+this.state.select_amount)}   
                 <button onClick={() => this.showMoreBreaches()}> →</button>

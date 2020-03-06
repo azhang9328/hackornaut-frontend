@@ -11,6 +11,7 @@ import ExpandLess from "@material-ui/icons/ExpandLess";
 import ExpandMore from "@material-ui/icons/ExpandMore";
 import EmailIcon from "@material-ui/icons/Email";
 import { Container } from "@material-ui/core";
+import ProfileList from "./ProfileList";
 
 
 const useStyles = makeStyles(theme => ({
@@ -56,9 +57,7 @@ const EmailList = props => {
         <Collapse in={open} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
             <ListItem button className={classes.nested}>
-                {/* <ListItemIcon>
-                <StarBorder />
-                </ListItemIcon> */}
+                {<ProfileList breaches={props.breaches}/>}
                 <ListItemText primary="Starred" />
             </ListItem>
             </List>
