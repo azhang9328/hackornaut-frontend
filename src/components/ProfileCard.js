@@ -9,7 +9,6 @@ import CardActions from '@material-ui/core/CardActions';
 import Collapse from '@material-ui/core/Collapse';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
 const useStyles = makeStyles(theme => ({
@@ -55,11 +54,6 @@ const ProfileCard = props => {
         title={result.domain}  
         subheader={result.breach_date}
       />
-      {/* <CardContent>
-        <Typography variant="body2" component="p">
-          <strong>BREACH DATE: </strong>{result.breach_date}
-        </Typography>
-      </CardContent> */}
       <CardActions disableSpacing>
         <IconButton
           className={clsx(classes.expand, {
@@ -68,14 +62,13 @@ const ProfileCard = props => {
           onClick={handleExpandClick}>
             <ExpandMoreIcon />
 
-          {/* <Button>Info</Button> */}
         </IconButton>
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent >
           <Typography paragraph><strong>BREACH COUNT: </strong>{result.pwn_count}</Typography>
           <Typography paragraph><strong>DETAILS: </strong>{result.description}</Typography> 
-          <Typography paragraph><strong>DATA CLASSES: </strong>{(result.data_classes).replace(/[\[\]"]+/g, '')}</Typography>
+          <Typography paragraph><strong>DATA CLASSES: </strong>{(result.data_classes).replace(/[[\]"]+/g, '')}</Typography>
           <Typography paragraph><strong>IS SPAM LIST: </strong>{result.is_spam_list ? "True" : "False"}</Typography>
         </CardContent>
       </Collapse>
