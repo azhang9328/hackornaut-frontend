@@ -56,14 +56,3 @@ class Login extends Component {
 }
 
 export default Login
-            // <div className={classes.root}>
-            //     <Paper className={classes.paper}>
-            //       <Grid container wrap="nowrap" spacing={2}>
-            //         <Grid item xs>
-            //           <Typography><strong>LOGIN: </strong>{result.domain}</Typography> 
-            //           <Typography><strong>USERNAME: </strong>{result.breach_date}</Typography>
-            //           <Typography><strong>LOGIN BUTTON: </strong>{result.pwn_count}</Typography>
-            //         </Grid>
-            //       </Grid>
-            //     </Paper>
-            // </div>
