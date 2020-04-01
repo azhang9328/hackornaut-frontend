@@ -51,7 +51,7 @@ const BreachCard = props => {
                       <Typography><strong>BREACH DATE: </strong>{result.breach_date}</Typography>
                       <Typography><strong>BREACH COUNT: </strong>{result.pwn_count}</Typography>
                       <Typography><strong>DETAILS: </strong>{result.description}</Typography> 
-                      <Typography><strong>DATA CLASSES: </strong>{(result.data_classes).replace(/[\[\]"]+/g, '')}</Typography>
+                      <Typography><strong>DATA CLASSES: </strong>{(result.data_classes).replace(/[[\]"]+/g, '')}</Typography>
                       <Typography><strong>IS SPAM LIST: </strong>{result.is_spam_list ? "True" : "False"}</Typography>
                     </Grid>
                   </Grid>
